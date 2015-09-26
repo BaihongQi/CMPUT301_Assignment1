@@ -8,7 +8,7 @@
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textColor="#ff703a" />
 
     <Button
@@ -28,7 +28,8 @@
         android:id="@+id/gameshow_buzzer"
         android:layout_above="@+id/stat"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buzzerMode" />
 
     <Button
         android:layout_width="wrap_content"

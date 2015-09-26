@@ -20,6 +20,14 @@
             android:name=".SingleModeIntroActivity"
             android:label="@string/title_activity_single_mode_intro" >
         </activity>
+        <activity
+            android:name=".BuzzerActivity"
+            android:label="@string/title_activity_buzzer" >
+        </activity>
+        <activity
+            android:name=".SingleModeActivity"
+            android:label="@string/title_activity_single_mode" >
+        </activity>
     </application>
 
 </manifest>

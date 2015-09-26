@@ -1,9 +1,11 @@
 package com.example.bq.assignment1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class SingleModeIntroActivity extends ActionBarActivity {
 
@@ -34,4 +36,11 @@ public class SingleModeIntroActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void singleMode(View view){
+        Intent intent = new Intent(SingleModeIntroActivity.this,SingleModeActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }
