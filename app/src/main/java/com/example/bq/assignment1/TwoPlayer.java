@@ -1,6 +1,7 @@
 package com.example.bq.assignment1;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,15 +20,37 @@ public class TwoPlayer extends ActionBarActivity {
         Button playertwoButton=(Button)findViewById(R.id.playertwo);
 
     }
+    //http://stackoverflow.com/questions/2115758/how-to-display-alert-dialog-in-android
     public void onePress(View view){
-        text = (TextView)findViewById(R.id.textView5);
-        text.setText("Player one pressed");
-
+        //text = (TextView)findViewById(R.id.textView5);
+        //text.setText("Player one pressed");
+        AlertDialog.Builder adb= new AlertDialog.Builder(TwoPlayer.this);
+        adb.setMessage("player one pressed first");
+        adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                text = (TextView) findViewById(R.id.textView5);
+                text.setText("Restarted, you can now buzzer");
+            }
+        });
+        adb.setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     public void twoPress(View view){
-        text = (TextView)findViewById(R.id.textView5);
-        text.setText("Player two pressed");
+        //text = (TextView)findViewById(R.id.textView5);
+        //text.setText("Player two pressed");
+        AlertDialog.Builder adb= new AlertDialog.Builder(TwoPlayer.this);
+        adb.setMessage("player two pressed first");
+        adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                text = (TextView)findViewById(R.id.textView5);
+                text.setText("Restarted, you can now buzzer");
+            }
+        });
+        adb.setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 
