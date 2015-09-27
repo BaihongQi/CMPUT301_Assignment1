@@ -1,13 +1,16 @@
 package com.example.bq.assignment1;
 
+import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class TwoPlayer extends ActionBarActivity {
-
+    private TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +19,19 @@ public class TwoPlayer extends ActionBarActivity {
         Button playertwoButton=(Button)findViewById(R.id.playertwo);
 
     }
-    
+    public void onePress(View view){
+        text = (TextView)findViewById(R.id.textView5);
+        text.setText("Player one pressed");
+
+    }
+
+    public void twoPress(View view){
+        text = (TextView)findViewById(R.id.textView5);
+        text.setText("Player two pressed");
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

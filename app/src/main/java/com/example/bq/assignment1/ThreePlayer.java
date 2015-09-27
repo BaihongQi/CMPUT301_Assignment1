@@ -1,24 +1,40 @@
 package com.example.bq.assignment1;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class BuzzerActivity extends ActionBarActivity {
-
+public class ThreePlayer extends ActionBarActivity {
+    private TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buzzer);
+        setContentView(R.layout.activity_three_player);
+        Button playeroneButton=(Button)findViewById(R.id.playerone);
+        Button playertwoButton=(Button)findViewById(R.id.playertwo);
+    }
+    public void onePress(View view){
+        text = (TextView)findViewById(R.id.textView6);
+        text.setText("Player one pressed");
+    }
+
+    public void twoPress(View view){
+        text = (TextView)findViewById(R.id.textView6);
+        text.setText("Player two pressed");
+    }
+    public void threePress(View view){
+        text = (TextView)findViewById(R.id.textView6);
+        text.setText("Player three pressed");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_buzzer, menu);
+        getMenuInflater().inflate(R.menu.menu_three_player, menu);
         return true;
     }
 
@@ -36,14 +52,4 @@ public class BuzzerActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void twoPlayer(View view){
-        Intent intent = new Intent(BuzzerActivity.this,TwoPlayer.class);
-        startActivity(intent);
-    }
-    public void threePlayer(View view){
-        Intent intent = new Intent(BuzzerActivity.this,ThreePlayer.class);
-        startActivity(intent);
-    }
-
-
 }
