@@ -1,24 +1,26 @@
 package com.example.bq.assignment1;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Button;
 
-public class BuzzerActivity extends ActionBarActivity {
+public class TwoPlayer extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buzzer);
-    }
+        setContentView(R.layout.activity_two_player);
+        Button playeroneButton=(Button)findViewById(R.id.playerone);
+        Button playertwoButton=(Button)findViewById(R.id.playertwo);
 
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_buzzer, menu);
+        getMenuInflater().inflate(R.menu.menu_two_player, menu);
         return true;
     }
 
@@ -36,11 +38,4 @@ public class BuzzerActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void twoPlayer(View view){
-        Intent intent = new Intent(BuzzerActivity.this,TwoPlayer.class);
-        startActivity(intent);
-    }
-
-
-
 }

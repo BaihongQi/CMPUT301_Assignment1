@@ -28,6 +28,10 @@
             android:name=".SingleModeActivity"
             android:label="@string/title_activity_single_mode" >
         </activity>
+        <activity
+            android:name=".TwoPlayer"
+            android:label="@string/title_activity_two_player" >
+        </activity>
     </application>
 
 </manifest>

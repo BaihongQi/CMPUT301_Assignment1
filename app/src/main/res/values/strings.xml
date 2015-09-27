@@ -16,5 +16,8 @@
     <string name="two_player_string">2 player</string>
     <string name="three_pl_str">3 player</string>
     <string name="four_pl_str">4 player</string>
+    <string name="title_activity_two_player">TwoPlayer</string>
+    <string name="playeronestr">player1</string>
+    <string name="playertwostr">player2</string>
 
 </resources>
