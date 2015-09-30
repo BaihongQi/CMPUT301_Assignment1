@@ -86,7 +86,8 @@ public class SingleModeActivity extends ActionBarActivity {
             }else{
                 float latency=diff -randomNum;
                 latency=(float)(latency/1000.0);
-                StatisticsController.getSingleStatistics().add(latency);
+                //StatisticsController.getSingleStatistics().add(latency);
+                TimeList.getAllTimes().add(latency);
                 bodyText.setText("Your latency is" + Float.toString(latency) + "s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
                 Button mainButton=(Button)findViewById(R.id.react);
                 mainButton.setText("start");

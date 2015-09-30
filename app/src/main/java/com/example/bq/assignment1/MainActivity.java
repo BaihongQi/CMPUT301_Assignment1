@@ -62,6 +62,9 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(MainActivity.this,BuzzerActivity.class);
         startActivity(intent);
     }
-
+    public void statistics (View view){
+        Intent intent = new Intent(MainActivity.this,Statistics.class);
+        startActivity(intent);
+    }
 
 }
