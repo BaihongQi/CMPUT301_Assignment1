@@ -28,7 +28,7 @@ public class Statistics extends ActionBarActivity {
     int threebuzzertwo=0;
     int threebuzzerthree=0;
     int fourbuzzerone=0;
-    TextView bodyText;
+    private TextView bodyText;
 
 
 
@@ -41,17 +41,17 @@ public class Statistics extends ActionBarActivity {
         ArrayList lastHundred= TimeList.getLastHundred();
         bodyText= (TextView) findViewById(R.id.screen_text);
 
-        bodyText.setText("a"+(float)times.get(1));
-        //bodyText.setText("Single Player Stat:\n" +"Average of all times: " + findAve(times) + " seconds\n"
-                        //+ "Average of last ten: " + findAve(lastTen) + " seconds\n" +
-                        //"Average of last hundred: " + findAve(lastHundred) + " seconds\n");
+
+        bodyText.setText("Single Player Stat:\n" +"Average of all times: " + findAve(times) + " seconds\n"
+                        + "Average of last ten: " + findAve(lastTen) + " seconds\n"+
+                        "Average of last hundred: " + findAve(lastHundred) + " seconds\n"+"mini of all"+findMin(times)+"max of all"+findMax(times)+"median of all"+findMedian(times));
 
 
 
     }
     public Float findMin(ArrayList list){
-        float min=(float)list.get(1);
-        for(int i=1;i<=list.size();i++){
+        float min=(float)list.get(0);
+        for(int i=0;i<list.size();i++){
             if ((float)list.get(i)<min){
                 min=(float)list.get(i);
             }
@@ -60,8 +60,8 @@ public class Statistics extends ActionBarActivity {
     }
 
     public Float findMax(ArrayList list){
-        float max=(float)list.get(1);
-        for(int i=1;i<=list.size();i++){
+        float max=(float)list.get(0);
+        for(int i=0;i<list.size();i++){
             if ((float)list.get(i)>max){
                 max=(float)list.get(i);
             }
@@ -71,7 +71,7 @@ public class Statistics extends ActionBarActivity {
     public Float findMedian(ArrayList list){
         float median;
         float[] floatArray = new float[list.size()];
-        for (int i=1;i<=list.size();i++) {
+        for (int i=0;i<list.size();i++) {
             floatArray[i] = ((float)list.get(i));
         }
         Arrays.sort(floatArray);
@@ -86,7 +86,7 @@ public class Statistics extends ActionBarActivity {
         float Ave;
         float sum=0;
         float[] floatArray = new float[list.size()];
-        for (int i=1;i<=list.size();i++) {
+        for (int i=0;i<list.size();i++) {
             floatArray[i] = ((float)list.get(i));
         }
         for(float i :floatArray){
