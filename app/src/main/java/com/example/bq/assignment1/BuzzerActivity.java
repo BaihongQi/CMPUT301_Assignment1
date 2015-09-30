@@ -44,6 +44,9 @@ public class BuzzerActivity extends ActionBarActivity {
         Intent intent = new Intent(BuzzerActivity.this,ThreePlayer.class);
         startActivity(intent);
     }
-
+    public void fourPlayer(View view){
+        Intent intent = new Intent(BuzzerActivity.this,FourPlayer.class);
+        startActivity(intent);
+    }
 
 }

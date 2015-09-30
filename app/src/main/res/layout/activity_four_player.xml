@@ -11,20 +11,41 @@
         android:id="@+id/textView7" />
 
     <Button
-        android:layout_width="155dp"
+        android:layout_width="165dp"
         android:layout_height="155dp"
-        android:text="New Button"
-        android:id="@+id/button2"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="144dp" />
+        android:text="@string/player1_str"
+        android:id="@+id/playerone"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/playerthree"
+        android:layout_toStartOf="@+id/playertwo"
+        android:onClick="onePress" />
 
     <Button
-        android:layout_width="155dp"
+        android:layout_width="165dp"
         android:layout_height="155dp"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignEnd="@+id/textView7" />
+        android:text="@string/player2_str"
+        android:id="@+id/playertwo"
+        android:layout_alignTop="@+id/playerone"
+        android:layout_alignEnd="@+id/textView7"
+        android:onClick="twoPress" />
+
+    <Button
+        android:layout_width="165dp"
+        android:layout_height="155dp"
+        android:text="@string/player3_str"
+        android:id="@+id/playerthree"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="44dp"
+        android:onClick="threePress" />
+
+    <Button
+        android:layout_width="165dp"
+        android:layout_height="155dp"
+        android:text="@string/player4_str"
+        android:id="@+id/playerfour"
+        android:layout_alignTop="@+id/playerthree"
+        android:layout_alignParentEnd="true"
+        android:onClick="fourPress" />
 
 </RelativeLayout>

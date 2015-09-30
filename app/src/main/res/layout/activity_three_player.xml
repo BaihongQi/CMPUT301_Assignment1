@@ -12,7 +12,7 @@
 
     <Button
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="135dp"
         android:text="@string/playerone_str"
         android:id="@+id/playerone"
         android:onClick="onePress"
@@ -21,7 +21,7 @@
 
     <Button
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="135dp"
         android:text="@string/playertwo_str"
         android:id="@+id/playertwo"
         android:onClick="twoPress"
@@ -30,12 +30,11 @@
 
     <Button
         android:layout_width="330dp"
-        android:layout_height="130dp"
+        android:layout_height="135dp"
         android:text="@string/playerthree_str"
         android:id="@+id/playerthree"
         android:onClick="threePress"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="48dp" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

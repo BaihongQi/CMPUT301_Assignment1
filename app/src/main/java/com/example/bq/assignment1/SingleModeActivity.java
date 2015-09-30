@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,14 +34,6 @@ public class SingleModeActivity extends ActionBarActivity {
 
 
 
-
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +41,7 @@ public class SingleModeActivity extends ActionBarActivity {
         bodyText = (TextView)findViewById(R.id.textView4);
         bodyText.setText("click react to start the game");
         ifclicked=Boolean.FALSE;
-
+        //Button mainButton=(Button)findViewById(R.id.react);
 
 
 
@@ -57,6 +51,8 @@ public class SingleModeActivity extends ActionBarActivity {
     public void click(View view) {
         if(ifclicked==Boolean.FALSE){
             bodyText.setText("game Start! click as quick as you can after you see the click button");
+            Button mainButton=(Button)findViewById(R.id.react);
+            mainButton.setText("react");
             ifclicked=Boolean.TRUE;
             rn=new Random();
             randomNum=rn.nextInt(1991)+10;
@@ -77,18 +73,23 @@ public class SingleModeActivity extends ActionBarActivity {
                         }
                     });
                 }
-            },0, 10);
+            },0, 100);
         }else{
             diff = System.currentTimeMillis() - starttime;
             mytimer.cancel();
             if(diff<(float)randomNum){
                 bodyText.setText("you press early");
+                Button mainButton=(Button)findViewById(R.id.react);
+                mainButton.setText("start");
                 //starttime=System.currentTimeMillis();
                 ifclicked=Boolean.FALSE;
             }else{
                 float latency=diff -randomNum;
                 latency=(float)(latency/1000.0);
-                bodyText.setText("Your latency is"+Float.toString(latency)+"s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
+                StatisticsController.getSingleStatistics().add(latency);
+                bodyText.setText("Your latency is" + Float.toString(latency) + "s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
+                Button mainButton=(Button)findViewById(R.id.react);
+                mainButton.setText("start");
                 ifclicked=Boolean.FALSE;
 
             }

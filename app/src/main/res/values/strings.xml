@@ -12,7 +12,7 @@
     <string name="title_activity_buzzer">BuzzerActivity</string>
     <string name="player_number_string">how many players do you have?</string>
     <string name="title_activity_single_mode">SingleModeActivity</string>
-    <string name="react_string">react</string>
+    <string name="react_string">start</string>
     <string name="two_player_string">2 player</string>
     <string name="three_pl_str">3 player</string>
     <string name="four_pl_str">4 player</string>
@@ -24,5 +24,10 @@
     <string name="playertwo_str">player2</string>
     <string name="playerthree_str">player3</string>
     <string name="title_activity_four_player">FourPlayer</string>
+    <string name="player1_str">player1</string>
+    <string name="player2_str">player2</string>
+    <string name="player3_str">player3</string>
+    <string name="player4_str">player4</string>
+    <string name="title_activity_statistics">Statistics</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.bq.assignment1;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,8 +30,12 @@ public class TwoPlayer extends ActionBarActivity {
         adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                text = (TextView) findViewById(R.id.textView5);
-                text.setText("Restarted, you can now buzzer");
+                //text = (TextView) findViewById(R.id.textView5);
+                //text.setText("Restarted, you can now buzzer");
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+
             }
         });
         adb.setIcon(android.R.drawable.ic_dialog_alert)
@@ -45,8 +50,11 @@ public class TwoPlayer extends ActionBarActivity {
         adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                text = (TextView)findViewById(R.id.textView5);
-                text.setText("Restarted, you can now buzzer");
+                //text = (TextView)findViewById(R.id.textView5);
+                //text.setText("Restarted, you can now buzzer");
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         });
         adb.setIcon(android.R.drawable.ic_dialog_alert)

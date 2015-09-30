@@ -1,5 +1,7 @@
 package com.example.bq.assignment1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -38,8 +40,22 @@ public class MainActivity extends ActionBarActivity {
     }
 //react to the click of the button to another activity
     public void singleModeIntro(View view){
-        Intent intent = new Intent(MainActivity.this,SingleModeIntroActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this,SingleModeIntroActivity.class);
+        //startActivity(intent);
+        AlertDialog.Builder adb= new AlertDialog.Builder(MainActivity.this);
+        adb.setMessage("this is introduction");
+        adb.setPositiveButton("dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //text = (TextView) findViewById(R.id.textView5);
+                //text.setText("Restarted, you can now buzzer");
+                Intent intent = new Intent(MainActivity.this,SingleModeActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        adb.setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     public void buzzerMode (View view){
