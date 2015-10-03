@@ -102,69 +102,6 @@ public class SingleModeActivity extends ActionBarActivity {
         }
 
     }
-    /*public void click(View view) {
-        if(iclick==1){
-            bodyText.setText("game Start! click as quick as you can after you see the click button");
-            rn=new Random();
-            //randomNum=rn.nextInt(1991)+10;
-            randomNum=1000;
-            mytimer = new Timer();
-            starttime=System.currentTimeMillis();
-            mytimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            diff = System.currentTimeMillis() - starttime;
-                            if (diff >= (Double) randomNum) {
-                                ifclicked = Boolean.TRUE;
-                                bodyText.setText("click");
-                            }
-        }
-    }
-                }*/
-
-
-
-
-
-    /*public void click(View view) {
-        if(ifclicked==Boolean.FALSE){
-            bodyText.setText("game Start! click as quick as you can after you see the clik button");
-            rn=new Random();
-            //randomNum=rn.nextInt(1991)+10;
-            randomNum=1000;
-            mytimer = new Timer();
-            starttime=System.currentTimeMillis();
-            mytimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            diff = System.currentTimeMillis() - starttime;
-                            if (diff >= (Double) randomNum) {
-                                ifclicked=Boolean.TRUE;
-                                bodyText.setText("click");
-                            }else{
-                                bodyText.setText("you press early");
-                                //starttime=System.currentTimeMillis();
-                                ifclicked=Boolean.FALSE;
-                            }
-                        }
-                    });
-                }
-            },0,1000);
-        }else{
-            Double latency=diff -randomNum;
-            latency=(Double)(latency/1000.0);
-            bodyText.setText("Your latency is"+Double.toString(latency));
-            ifclicked=Boolean.FALSE;
-
-            }
-
-        }*/
 
 
     @Override

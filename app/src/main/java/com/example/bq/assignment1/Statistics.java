@@ -1,11 +1,14 @@
 package com.example.bq.assignment1;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -34,23 +37,37 @@ public class Statistics extends ActionBarActivity {
     private TextView bodyText;
     //private ArrayList <Double>timelist = TimeList.getAllTimes();
     TimeList myTimeList=new TimeList((this));
-    //ArrayList times;
-    //ArrayList lastTen;
-    //ArrayList lastHundred;
+    BuzzerTime myBuzzerTime=new BuzzerTime((this));
+    private ArrayList times;
+    private ArrayList lastTen;
+    private ArrayList lastHundred;
+    private ArrayList buzzerdata;
 
     public void startStat(){
         myTimeList.loadFromFile();
-        /*ArrayList times=TimeList.getAllTimes();
-        ArrayList lastTen=TimeList.getLastTen();
-        ArrayList lastHundred= TimeList.getLastHundred();*/
+        myBuzzerTime.loadFromFile();
+        fillUpLatency();
+        buzzerdata=myBuzzerTime.getBuzzers();
         bodyText= (TextView) findViewById(R.id.screen_text);
 
-        bodyText.setText("Single Player Stat:\n" +"Average of all times: " + findAve(myTimeList.getAllTimes()) + " seconds\n"
-                        + "Average of last ten: " + findAve(myTimeList.getLastTen()) + " seconds\n"+
-                        "Average of last hundred: " + findAve(myTimeList.getLastHundred()) + " seconds\n"+"mini of all"+findMin(myTimeList.getAllTimes())+"second\n"
-                +"max of all"+findMax(myTimeList.getAllTimes())+"seconds\n" +
-                "median of all"+findMedian(myTimeList.getAllTimes())+"seconds");
-
+        bodyText.setText("Reaction time statistics:\n"
+                +"mini of all"+findMin(times)+"second\n"
+                +"mini of last ten"+findMin(lastTen)+"seconds\n"
+                +"mini of last hundred"+findMin(lastHundred)+"seconds\n"
+                + "max of all"+findMax(times)+"seconds\n"
+                + "max of last ten"+findMax(lastTen)+"seconds\n"
+                + "max of last hundred"+findMax(lastHundred)+"seconds\n"
+                + "Average of all times: " + findAve(times) + " seconds\n"
+                + "Average of last ten: " + findAve(lastTen) + " seconds\n"
+                + "Average of last hundred: " + findAve(lastHundred) + " seconds\n"
+                + "median of all"+findMedian(times)+"seconds\n"
+                + "median of last ten"+findMedian(lastTen)+"seconds\n"
+                + "median of last hundred"+findMedian(lastHundred)+"seconds\n"
+                + "Buzzer counts\n"
+                +"2 players: Player 1 buzzers "+twoBuzzerOne(buzzerdata)+" times. Player 2 buzzers "+twoBuzzerTwo(buzzerdata)+" times\n"
+                +"3 players: Player 1 buzzers "+threeBuzzerOne(buzzerdata)+" times. Player 2 buzzers"+threeBuzzerTwo(buzzerdata)+" times. Player 3 buzzers"+threeBuzzerThree(buzzerdata)+" times\n"
+                +"4 players: Player 1 buzzers "+fourBuzzerOne(buzzerdata)+" times. Player 2 buzzers"+fourBuzzerTwo(buzzerdata)+" times. Player 3 buzzers"+fourBuzzerThree(buzzerdata)+
+                " times. Player 4 buzzers"+fourBuzzerFour(buzzerdata)+"times.");
 
 
     }
@@ -116,19 +133,163 @@ public class Statistics extends ActionBarActivity {
             return Ave;
         }
     }
+    public int twoBuzzerOne(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 21;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+        }
+    public int twoBuzzerTwo(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 22;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int threeBuzzerOne(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 31;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int threeBuzzerTwo(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 32;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int threeBuzzerThree(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 33;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int fourBuzzerOne(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 41;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int fourBuzzerTwo(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 42;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int fourBuzzerThree(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 43;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
+    public int fourBuzzerFour(ArrayList list){
+        if (list.size()==0){
+            return 0;
+        }else {
+            int Num = 0;
+            Integer TwentyOne = 44;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == (TwentyOne)) {
+                    Num = Num + 1;
+                }
+            }
+            return Num;
+        }
+    }
     public void clear(View view){
         myTimeList.clearTimes();
         myTimeList.saveInFile();
+        myBuzzerTime.clearBuzzers();
+        myBuzzerTime.saveInFile();
         startStat();
     }
 
-    /*public void fillUpLatency(){
+    public void fillUpLatency(){
         times=myTimeList.getAllTimes();
-        //lastTen=myTimeList.getLastTen();
-        //lastHundred=myTimeList.getLastHundred();
-    }*/
+        lastTen=myTimeList.getLastTen();
+        lastHundred=myTimeList.getLastHundred();
+    }
 
-
+    public void sendEmail(View view){
+        String[] TO = {""};
+        String[] CC = {""};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText.getText());
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+        }catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(Statistics.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

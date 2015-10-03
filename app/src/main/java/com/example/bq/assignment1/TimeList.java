@@ -36,9 +36,9 @@ public class TimeList extends Object{
     public void addLatency(Double time){
         times.add(time);
     }
-    public void setTimes(ArrayList<Double> times){
+    /*public void setTimes(ArrayList<Double> times){
         this.times=times;
-    }
+    }*/
     public ArrayList<Double> getAllTimes(){
         return times;
     }

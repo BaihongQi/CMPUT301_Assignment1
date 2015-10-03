@@ -11,12 +11,22 @@
         android:id="@+id/screen_text" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clear_string"
         android:id="@+id/clear"
+        android:onClick="clear"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/screen_text"
-        android:onClick="clear" />
+        android:layout_alignEnd="@+id/screen_text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_email_str"
+        android:id="@+id/send_email"
+        android:layout_above="@+id/clear"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/clear"
+        android:onClick="sendEmail" />
 
 </RelativeLayout>

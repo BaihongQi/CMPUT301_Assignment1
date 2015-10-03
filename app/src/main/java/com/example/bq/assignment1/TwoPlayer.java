@@ -11,30 +11,41 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class TwoPlayer extends ActionBarActivity {
+    BuzzerTime myBuzzerTime=new BuzzerTime((this));
     private TextView text;
+    private ArrayList buzzerdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myBuzzerTime.loadFromFile();
+        buzzerdata=myBuzzerTime.getBuzzers();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_player);
         Button playeroneButton=(Button)findViewById(R.id.playerone);
         Button playertwoButton=(Button)findViewById(R.id.playertwo);
+        //myBuzzerTime=new BuzzerTime(this);
 
     }
     //http://stackoverflow.com/questions/2115758/how-to-display-alert-dialog-in-android
     public void onePress(View view){
         //text = (TextView)findViewById(R.id.textView5);
         //text.setText("Player one pressed");
+        Integer num=21;
+        buzzerdata.add(num);
+        myBuzzerTime.setBuzzers(buzzerdata);
+        myBuzzerTime.saveInFile();
         AlertDialog.Builder adb= new AlertDialog.Builder(TwoPlayer.this);
         adb.setMessage("player one pressed first");
         adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //text = (TextView) findViewById(R.id.textView5);
-                //text.setText("Restarted, you can now buzzer");
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                text = (TextView) findViewById(R.id.textView5);
+                text.setText("Restarted, you can now buzzer");
+                //Intent intent = getIntent();
+                //finish();
+                //startActivity(intent);
 
             }
         });
@@ -45,16 +56,20 @@ public class TwoPlayer extends ActionBarActivity {
     public void twoPress(View view){
         //text = (TextView)findViewById(R.id.textView5);
         //text.setText("Player two pressed");
+        Integer num=22;
+        buzzerdata.add(num);
+        myBuzzerTime.setBuzzers(buzzerdata);
+        myBuzzerTime.saveInFile();
         AlertDialog.Builder adb= new AlertDialog.Builder(TwoPlayer.this);
         adb.setMessage("player two pressed first");
         adb.setPositiveButton("ok, restart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //text = (TextView)findViewById(R.id.textView5);
-                //text.setText("Restarted, you can now buzzer");
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                text = (TextView)findViewById(R.id.textView5);
+                text.setText("Restarted, you can now buzzer");
+                //Intent intent = getIntent();
+                //finish();
+                //startActivity(intent);
             }
         });
         adb.setIcon(android.R.drawable.ic_dialog_alert)
