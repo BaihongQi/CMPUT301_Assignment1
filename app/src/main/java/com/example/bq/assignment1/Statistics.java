@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -12,8 +13,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -29,80 +32,101 @@ public class Statistics extends ActionBarActivity {
     int threebuzzerthree=0;
     int fourbuzzerone=0;
     private TextView bodyText;
-
-
-
-
-
+    //private ArrayList <Double>timelist = TimeList.getAllTimes();
+    TimeList myTimeList=new TimeList((this));
+    //ArrayList times;
+    //ArrayList lastTen;
+    //ArrayList lastHundred;
 
     public void startStat(){
-        ArrayList times=TimeList.getAllTimes();
+        myTimeList.loadFromFile();
+        /*ArrayList times=TimeList.getAllTimes();
         ArrayList lastTen=TimeList.getLastTen();
-        ArrayList lastHundred= TimeList.getLastHundred();
+        ArrayList lastHundred= TimeList.getLastHundred();*/
         bodyText= (TextView) findViewById(R.id.screen_text);
 
-
-        bodyText.setText("Single Player Stat:\n" +"Average of all times: " + findAve(times) + " seconds\n"
-                        + "Average of last ten: " + findAve(lastTen) + " seconds\n"+
-                        "Average of last hundred: " + findAve(lastHundred) + " seconds\n"+"mini of all"+findMin(times)+"max of all"+findMax(times)+"median of all"+findMedian(times));
+        bodyText.setText("Single Player Stat:\n" +"Average of all times: " + findAve(myTimeList.getAllTimes()) + " seconds\n"
+                        + "Average of last ten: " + findAve(myTimeList.getLastTen()) + " seconds\n"+
+                        "Average of last hundred: " + findAve(myTimeList.getLastHundred()) + " seconds\n"+"mini of all"+findMin(myTimeList.getAllTimes())+"second\n"
+                +"max of all"+findMax(myTimeList.getAllTimes())+"seconds\n" +
+                "median of all"+findMedian(myTimeList.getAllTimes())+"seconds");
 
 
 
     }
-    public Float findMin(ArrayList list){
-        float min=(float)list.get(0);
-        for(int i=0;i<list.size();i++){
-            if ((float)list.get(i)<min){
-                min=(float)list.get(i);
+    public Double findMin(ArrayList list){
+        if (list.size()==0){
+            return 0.0;
+        }else {
+            Double min = (Double) list.get(0);
+            for (int i = 0; i < list.size(); i++) {
+                if ((Double) list.get(i) < min) {
+                    min = (Double) list.get(i);
+                }
             }
+            return min;
         }
-        return min;
-    }
+        }
 
-    public Float findMax(ArrayList list){
-        float max=(float)list.get(0);
-        for(int i=0;i<list.size();i++){
-            if ((float)list.get(i)>max){
-                max=(float)list.get(i);
+    public Double findMax(ArrayList list){
+        if (list.size()==0){
+            return 0.0;
+        }else {
+            Double max = (Double) list.get(0);
+            for (int i = 0; i < list.size(); i++) {
+                if ((Double) list.get(i) > max) {
+                    max = (Double) list.get(i);
+                }
             }
+            return max;
         }
-        return max;
     }
-    public Float findMedian(ArrayList list){
-        float median;
-        float[] floatArray = new float[list.size()];
-        for (int i=0;i<list.size();i++) {
-            floatArray[i] = ((float)list.get(i));
+    public Double findMedian(ArrayList list){
+        if (list.size()==0){
+            return 0.0;
+        }else {
+            Double median;
+            Double[] DoubleArray = new Double[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                DoubleArray[i] = ((Double) list.get(i));
+            }
+            Arrays.sort(DoubleArray);
+            if (DoubleArray.length % 2 == 0) {
+                median = (DoubleArray[DoubleArray.length / 2] + DoubleArray[DoubleArray.length / 2 - 1]) / 2;
+            } else {
+                median = DoubleArray[DoubleArray.length / 2];
+            }
+            return median;
         }
-        Arrays.sort(floatArray);
-        if (floatArray.length % 2 == 0){
-            median = (floatArray[floatArray.length/2] + floatArray[floatArray.length/2 - 1])/2;
-        } else {
-            median = floatArray[floatArray.length / 2];
-        }
-        return median;
     }
-    public Float findAve(ArrayList list){
-        float Ave;
-        float sum=0;
-        float[] floatArray = new float[list.size()];
-        for (int i=0;i<list.size();i++) {
-            floatArray[i] = ((float)list.get(i));
+    public Double findAve(ArrayList list){
+        if (list.size()==0){
+            return 0.0;
+        }else {
+            Double Ave;
+            Double sum = 0.0;
+            Double[] DoubleArray = new Double[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                DoubleArray[i] = ((Double) list.get(i));
+            }
+            for (Double i : DoubleArray) {
+                sum += i;
+            }
+            Ave = sum / list.size();
+            return Ave;
         }
-        for(float i :floatArray){
-            sum += i;
-        }
-        Ave=sum/list.size();
-        return Ave;
+    }
+    public void clear(View view){
+        myTimeList.clearTimes();
+        myTimeList.saveInFile();
+        startStat();
     }
 
-
-
-
-
-
-
-
+    /*public void fillUpLatency(){
+        times=myTimeList.getAllTimes();
+        //lastTen=myTimeList.getLastTen();
+        //lastHundred=myTimeList.getLastHundred();
+    }*/
 
 
     @Override
@@ -133,22 +157,6 @@ public class Statistics extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    /*private void loadFromFile() {
-        try {
-            FileInputStream fis = openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson =new Gson();
-            //Taken from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
-            Type listType = new TypeToken<ArrayList<Float>>() {}.getType();
-            StatisticsController.setSingleStatistics(gson.fromJson(in,listType));
-        } catch (FileNotFoundException e) {
-            //tweets = new ArrayList<Tweet>();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }*/
-
 
 
 

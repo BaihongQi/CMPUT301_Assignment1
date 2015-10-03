@@ -10,4 +10,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/screen_text" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_string"
+        android:id="@+id/clear"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/screen_text"
+        android:onClick="clear" />
+
 </RelativeLayout>

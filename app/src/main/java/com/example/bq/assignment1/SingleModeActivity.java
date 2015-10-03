@@ -16,13 +16,15 @@ import java.util.TimerTask;
 
 
 public class SingleModeActivity extends ActionBarActivity {
+    ArrayList<Double> times=new ArrayList<Double>();
     private TextView bodyText;
-    private int randomNum;
+    private Double randomNum;
     private Boolean ifclicked;
     Timer mytimer;
     private Random rn;
     long starttime;
-    float diff;
+    double diff;
+    TimeList myTimeList;
 
 
 
@@ -41,10 +43,8 @@ public class SingleModeActivity extends ActionBarActivity {
         bodyText = (TextView)findViewById(R.id.textView4);
         bodyText.setText("click react to start the game");
         ifclicked=Boolean.FALSE;
-        //Button mainButton=(Button)findViewById(R.id.react);
-
-
-
+        myTimeList=new TimeList(this);
+                //Button mainButton=(Button)findViewById(R.id.react);
     }
 //http://stackoverflow.com/questions/4597690/android-timer-how
 
@@ -55,7 +55,7 @@ public class SingleModeActivity extends ActionBarActivity {
             mainButton.setText("react");
             ifclicked=Boolean.TRUE;
             rn=new Random();
-            randomNum=rn.nextInt(1991)+10;
+            randomNum=new Double(rn.nextInt(1991)+10);
             mytimer = new Timer();
             starttime=System.currentTimeMillis();
             //bodyText.setText("start " + Integer.toString((int)starttime));
@@ -66,7 +66,7 @@ public class SingleModeActivity extends ActionBarActivity {
                         @Override
                         public void run() {
                             diff = System.currentTimeMillis() - starttime;
-                            if (diff >= (float) randomNum) {
+                            if (diff >= (Double) randomNum) {
                                 bodyText.setText("click");
                                 ifclicked=Boolean.TRUE;
                             }
@@ -77,18 +77,22 @@ public class SingleModeActivity extends ActionBarActivity {
         }else{
             diff = System.currentTimeMillis() - starttime;
             mytimer.cancel();
-            if(diff<(float)randomNum){
+            if(diff<(double)randomNum){
                 bodyText.setText("you press early");
                 Button mainButton=(Button)findViewById(R.id.react);
                 mainButton.setText("start");
                 //starttime=System.currentTimeMillis();
                 ifclicked=Boolean.FALSE;
             }else{
-                float latency=diff -randomNum;
-                latency=(float)(latency/1000.0);
+                Double latency=(Double)(diff -randomNum);
+                latency= latency/1000.0;
+
                 //StatisticsController.getSingleStatistics().add(latency);
-                TimeList.getAllTimes().add(latency);
-                bodyText.setText("Your latency is" + Float.toString(latency) + "s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
+                //myTimeList.setTimes(latency);
+                myTimeList.addLatency(latency);
+                myTimeList.saveInFile();
+
+                bodyText.setText("Your latency is" + Double.toString(latency) + "s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
                 Button mainButton=(Button)findViewById(R.id.react);
                 mainButton.setText("start");
                 ifclicked=Boolean.FALSE;
@@ -113,7 +117,7 @@ public class SingleModeActivity extends ActionBarActivity {
                         @Override
                         public void run() {
                             diff = System.currentTimeMillis() - starttime;
-                            if (diff >= (float) randomNum) {
+                            if (diff >= (Double) randomNum) {
                                 ifclicked = Boolean.TRUE;
                                 bodyText.setText("click");
                             }
@@ -140,7 +144,7 @@ public class SingleModeActivity extends ActionBarActivity {
                         @Override
                         public void run() {
                             diff = System.currentTimeMillis() - starttime;
-                            if (diff >= (float) randomNum) {
+                            if (diff >= (Double) randomNum) {
                                 ifclicked=Boolean.TRUE;
                                 bodyText.setText("click");
                             }else{
@@ -153,9 +157,9 @@ public class SingleModeActivity extends ActionBarActivity {
                 }
             },0,1000);
         }else{
-            float latency=diff -randomNum;
-            latency=(float)(latency/1000.0);
-            bodyText.setText("Your latency is"+Float.toString(latency));
+            Double latency=diff -randomNum;
+            latency=(Double)(latency/1000.0);
+            bodyText.setText("Your latency is"+Double.toString(latency));
             ifclicked=Boolean.FALSE;
 
             }
