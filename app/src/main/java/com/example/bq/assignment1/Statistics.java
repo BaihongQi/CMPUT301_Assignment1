@@ -28,12 +28,7 @@ import java.util.Arrays;
 public class Statistics extends ActionBarActivity {
     private static final String FILENAME = "file.sav";
 
-    int twobuzzerone=0;
-    int twobuzzertwo=0;
-    int threebuzzerone=0;
-    int threebuzzertwo=0;
-    int threebuzzerthree=0;
-    int fourbuzzerone=0;
+
     private TextView bodyText;
     //private ArrayList <Double>timelist = TimeList.getAllTimes();
     TimeList myTimeList=new TimeList((this));
