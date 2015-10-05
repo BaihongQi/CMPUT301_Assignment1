@@ -19,6 +19,9 @@ measuring buzzer buzzs
 clearing stastistics
 emailing statistics
 
+demo video for this app
+https://github.com/BaihongQi/CMPUT301_Assignment1/blob/master/doc/bq-reflex_demo.mkv
+
 Licence
 bq-reflex: add game for react and buzzer
 

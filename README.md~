@@ -1,4 +1,7 @@
-BaihongQi CMPUT301_Assignment1
+name:               Baihong Qi
+ONE Card number:    1401847
+CCID                bq
+
 
 This is an app which is a easy-to-use reaction timer and gameshow buzzer. Gameshow buzzers are used on shows like Jeopardy to determine who gets to answer a question by who pressed the buzzer button first. Reaction timers are used to train for such shows so that you can press the buzzer button fast to answer the question.
 
@@ -15,6 +18,9 @@ measuring reaction times
 measuring buzzer buzzs
 clearing stastistics
 emailing statistics
+
+demo video for this app
+https://github.com/BaihongQi/CMPUT301_Assignment1/blob/master/doc/bq-reflex_demo.mkv
 
 Licence
 bq-reflex: add game for react and buzzer
