@@ -23,15 +23,12 @@ public class TwoPlayer extends ActionBarActivity {
         buzzerdata=myBuzzerTime.getBuzzers();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_player);
-        Button playeroneButton=(Button)findViewById(R.id.playerone);
-        Button playertwoButton=(Button)findViewById(R.id.playertwo);
-        //myBuzzerTime=new BuzzerTime(this);
 
     }
     //http://stackoverflow.com/questions/2115758/how-to-display-alert-dialog-in-android
+    //use an alertdiaog to show who buzzer first
+    // and record file to the arraylist
     public void onePress(View view){
-        //text = (TextView)findViewById(R.id.textView5);
-        //text.setText("Player one pressed");
         Integer num=21;
         buzzerdata.add(num);
         myBuzzerTime.setBuzzers(buzzerdata);
@@ -43,10 +40,6 @@ public class TwoPlayer extends ActionBarActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 text = (TextView) findViewById(R.id.textView5);
                 text.setText("Restarted, you can now buzzer");
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
-
             }
         });
         adb.setIcon(android.R.drawable.ic_dialog_alert)
@@ -54,8 +47,6 @@ public class TwoPlayer extends ActionBarActivity {
     }
 
     public void twoPress(View view){
-        //text = (TextView)findViewById(R.id.textView5);
-        //text.setText("Player two pressed");
         Integer num=22;
         buzzerdata.add(num);
         myBuzzerTime.setBuzzers(buzzerdata);
@@ -67,9 +58,6 @@ public class TwoPlayer extends ActionBarActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 text = (TextView)findViewById(R.id.textView5);
                 text.setText("Restarted, you can now buzzer");
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
             }
         });
         adb.setIcon(android.R.drawable.ic_dialog_alert)

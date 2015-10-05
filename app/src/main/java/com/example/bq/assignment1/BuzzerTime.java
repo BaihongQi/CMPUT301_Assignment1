@@ -25,13 +25,8 @@ public class BuzzerTime extends Object{
     public BuzzerTime(Context context) {
         this.context=context;
     }
-
     public void setBuzzers(ArrayList buzzers) {
         this.buzzers = buzzers;
-    }
-
-    public void addBuzzers(Integer buzzer){
-        buzzers.add(buzzer);
     }
     public void clearBuzzers(){
         buzzers.removeAll(buzzers);
@@ -39,6 +34,7 @@ public class BuzzerTime extends Object{
     public ArrayList<Integer>getBuzzers(){
         return buzzers;
     }
+    //using gson to save and load file
     public void saveInFile() {
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME,

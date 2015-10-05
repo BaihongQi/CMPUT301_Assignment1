@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment1</string>
+    <string name="app_name">bq-reflex</string>
 
     <string name="hello_world">This is a simple reaction timer and gameshow buzzer application.</string>
     <string name="hello_world2">This is introduction.</string>

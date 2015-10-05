@@ -6,17 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class SingleModeActivity extends ActionBarActivity {
-    ArrayList<Double> times=new ArrayList<Double>();
+    //ArrayList<Double> times=new ArrayList<Double>();
     private TextView bodyText;
     private Double randomNum;
     private Boolean ifclicked;
@@ -27,28 +24,19 @@ public class SingleModeActivity extends ActionBarActivity {
     TimeList myTimeList;
 
 
-
-
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_mode);
         bodyText = (TextView)findViewById(R.id.textView4);
         bodyText.setText("click react to start the game");
-        ifclicked=Boolean.FALSE;
+        ifclicked=Boolean.FALSE;//show if the the game have already start
         myTimeList=new TimeList(this);
-                //Button mainButton=(Button)findViewById(R.id.react);
     }
 //http://stackoverflow.com/questions/4597690/android-timer-how
 
     public void click(View view) {
+        // if the game have not started yet,clcik to start
         if(ifclicked==Boolean.FALSE){
             bodyText.setText("game Start! click as quick as you can after you see the click button");
             Button mainButton=(Button)findViewById(R.id.react);
@@ -58,7 +46,6 @@ public class SingleModeActivity extends ActionBarActivity {
             randomNum=new Double(rn.nextInt(1991)+10);
             mytimer = new Timer();
             starttime=System.currentTimeMillis();
-            //bodyText.setText("start " + Integer.toString((int)starttime));
             mytimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -75,6 +62,7 @@ public class SingleModeActivity extends ActionBarActivity {
                 }
             },0, 100);
         }else{
+            //check if the game has started, then click to stop and show latency
             diff = System.currentTimeMillis() - starttime;
             mytimer.cancel();
             if(diff<(double)randomNum){
@@ -86,13 +74,9 @@ public class SingleModeActivity extends ActionBarActivity {
             }else{
                 Double latency=(Double)(diff -randomNum);
                 latency= latency/1000.0;
-
-                //StatisticsController.getSingleStatistics().add(latency);
-                //myTimeList.setTimes(latency);
                 myTimeList.addLatency(latency);
                 myTimeList.saveInFile();
-
-                bodyText.setText("Your latency is" + Double.toString(latency) + "s");// /*+ "\nStart " + Integer.toString((int)starttime) + " End " + Integer.toString((int)(System.currentTimeMillis()))*/);
+                bodyText.setText("Your latency is" + Double.toString(latency) + "s");
                 Button mainButton=(Button)findViewById(R.id.react);
                 mainButton.setText("start");
                 ifclicked=Boolean.FALSE;

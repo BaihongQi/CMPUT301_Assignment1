@@ -36,6 +36,7 @@ public class BuzzerActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    //jump to activity of different players
     public void twoPlayer(View view){
         Intent intent = new Intent(BuzzerActivity.this,TwoPlayer.class);
         startActivity(intent);

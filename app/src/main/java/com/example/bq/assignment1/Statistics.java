@@ -26,19 +26,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Statistics extends ActionBarActivity {
-    private static final String FILENAME = "file.sav";
-
-
     private TextView bodyText;
-    //private ArrayList <Double>timelist = TimeList.getAllTimes();
     TimeList myTimeList=new TimeList((this));
     BuzzerTime myBuzzerTime=new BuzzerTime((this));
     private ArrayList times;
     private ArrayList lastTen;
     private ArrayList lastHundred;
     private ArrayList buzzerdata;
-
+    //a function to start
     public void startStat(){
+        //load the data first form the file
         myTimeList.loadFromFile();
         myBuzzerTime.loadFromFile();
         fillUpLatency();
@@ -46,26 +43,28 @@ public class Statistics extends ActionBarActivity {
         bodyText= (TextView) findViewById(R.id.screen_text);
 
         bodyText.setText("Reaction time statistics:\n"
-                +"mini of all"+findMin(times)+"second\n"
-                +"mini of last ten"+findMin(lastTen)+"seconds\n"
-                +"mini of last hundred"+findMin(lastHundred)+"seconds\n"
-                + "max of all"+findMax(times)+"seconds\n"
-                + "max of last ten"+findMax(lastTen)+"seconds\n"
-                + "max of last hundred"+findMax(lastHundred)+"seconds\n"
-                + "Average of all times: " + findAve(times) + " seconds\n"
-                + "Average of last ten: " + findAve(lastTen) + " seconds\n"
-                + "Average of last hundred: " + findAve(lastHundred) + " seconds\n"
-                + "median of all"+findMedian(times)+"seconds\n"
-                + "median of last ten"+findMedian(lastTen)+"seconds\n"
-                + "median of last hundred"+findMedian(lastHundred)+"seconds\n"
-                + "Buzzer counts\n"
-                +"2 players: Player 1 buzzers "+twoBuzzerOne(buzzerdata)+" times. Player 2 buzzers "+twoBuzzerTwo(buzzerdata)+" times\n"
-                +"3 players: Player 1 buzzers "+threeBuzzerOne(buzzerdata)+" times. Player 2 buzzers"+threeBuzzerTwo(buzzerdata)+" times. Player 3 buzzers"+threeBuzzerThree(buzzerdata)+" times\n"
-                +"4 players: Player 1 buzzers "+fourBuzzerOne(buzzerdata)+" times. Player 2 buzzers"+fourBuzzerTwo(buzzerdata)+" times. Player 3 buzzers"+fourBuzzerThree(buzzerdata)+
-                " times. Player 4 buzzers"+fourBuzzerFour(buzzerdata)+"times.");
+                + "Minimum of all " + String.format("%.3f", findMin(times)) + " second\n"
+                + "Minimum of last ten " + String.format("%.3f", findMin(lastTen)) + " seconds\n"
+                + "Minimum of last hundred " + String.format("%.3f", findMin(lastHundred)) + " seconds\n"
+                + "Maxmum of all " + String.format("%.3f", findMax(times)) + " seconds\n"
+                + "Maxmum of last ten " + String.format("%.3f", findMax(lastTen)) + " seconds\n"
+                + "Maxmum of last hundred " + String.format("%.3f", findMax(lastHundred)) + " seconds\n"
+                + "Average of all times: " + String.format("%.3f", findAve(times)) + " seconds\n"
+                + "Average of last ten: " + String.format("%.3f", findAve(lastTen)) + " seconds\n"
+                + "Average of last hundred: " + String.format("%.3f", findAve(lastHundred)) + " seconds\n"
+                + "Median of all " + String.format("%.3f", findMedian(times)) + " seconds\n"
+                + "Median of last ten " + String.format("%.3f", findMedian(lastTen)) + " seconds\n"
+                + "Median of last hundred " + String.format("%.3f", findMedian(lastHundred)) + " seconds\n"
+                + "Buzzer counts: \n"
+                + "2 players: Player 1 buzzers " + twoBuzzerOne(buzzerdata) + " times. Player 2 buzzers " + twoBuzzerTwo(buzzerdata) + " times\n"
+                + "3 players: Player 1 buzzers " + threeBuzzerOne(buzzerdata) + " times. Player 2 buzzers " + threeBuzzerTwo(buzzerdata) + " times. Player 3 buzzers " + threeBuzzerThree(buzzerdata) + " times\n"
+                + "4 players: Player 1 buzzers " + fourBuzzerOne(buzzerdata) + " times. Player 2 buzzers " + fourBuzzerTwo(buzzerdata) + " times. Player 3 buzzers " + fourBuzzerThree(buzzerdata) +
+                " times. Player 4 buzzers " + fourBuzzerFour(buzzerdata) + "times.");
+
 
 
     }
+    //this is the function for calculate different data.
     public Double findMin(ArrayList list){
         if (list.size()==0){
             return 0.0;
@@ -128,11 +127,13 @@ public class Statistics extends ActionBarActivity {
             return Ave;
         }
     }
+    // here is the function to find how many times each player buzzer
     public int twoBuzzerOne(ArrayList list){
         if (list.size()==0){
             return 0;
         }else {
             int Num = 0;
+            //21 represent for two player mode, player1 buzzers.
             Integer TwentyOne = 21;
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i) == (TwentyOne)) {
@@ -267,7 +268,7 @@ public class Statistics extends ActionBarActivity {
         lastTen=myTimeList.getLastTen();
         lastHundred=myTimeList.getLastHundred();
     }
-
+    //http://stackoverflow.com/questions/28546703/how-to-code-using-android-studio-to-send-an-email
     public void sendEmail(View view){
         String[] TO = {""};
         String[] CC = {""};

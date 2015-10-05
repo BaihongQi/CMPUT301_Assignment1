@@ -40,15 +40,11 @@ public class MainActivity extends ActionBarActivity {
     }
 //react to the click of the button to another activity
     public void singleModeIntro(View view){
-        //Intent intent = new Intent(MainActivity.this,SingleModeIntroActivity.class);
-        //startActivity(intent);
         AlertDialog.Builder adb= new AlertDialog.Builder(MainActivity.this);
-        adb.setMessage("this is introduction");
-        adb.setPositiveButton("dismiss", new DialogInterface.OnClickListener() {
+        adb.setMessage("In this mode, click start button to start, then you should click as quick as you can after you see 'click' is shown on the screen. ");
+        adb.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //text = (TextView) findViewById(R.id.textView5);
-                //text.setText("Restarted, you can now buzzer");
                 Intent intent = new Intent(MainActivity.this,SingleModeActivity.class);
                 startActivity(intent);
 
@@ -57,11 +53,12 @@ public class MainActivity extends ActionBarActivity {
         adb.setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
-
+    //jump to buzzer activity
     public void buzzerMode (View view){
         Intent intent = new Intent(MainActivity.this,BuzzerActivity.class);
         startActivity(intent);
     }
+    //jump to statistics activity
     public void statistics (View view){
         Intent intent = new Intent(MainActivity.this,Statistics.class);
         startActivity(intent);

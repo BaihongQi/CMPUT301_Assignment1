@@ -22,12 +22,12 @@ public class FourPlayer extends ActionBarActivity {
         buzzerdata=myBuzzerTime.getBuzzers();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_player);
-        //myBuzzerTime=new BuzzerTime(this);
 
     }
+
+    //when somebody press player1, then add 41 to the arraylist
     public void onePress(View view){
         Integer num=41;
-        //myBuzzerTime.addBuzzers(num);
         buzzerdata.add(num);
         myBuzzerTime.setBuzzers(buzzerdata);
         myBuzzerTime.saveInFile();
@@ -52,7 +52,6 @@ public class FourPlayer extends ActionBarActivity {
         Integer num=42;
         buzzerdata.add(num);
         myBuzzerTime.setBuzzers(buzzerdata);
-        //myBuzzerTime.addBuzzers(num);
         myBuzzerTime.saveInFile();
         AlertDialog.Builder adb= new AlertDialog.Builder(FourPlayer.this);
         adb.setMessage("player two pressed first");
@@ -61,9 +60,7 @@ public class FourPlayer extends ActionBarActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 text = (TextView) findViewById(R.id.textView7);
                 text.setText("Restarted, you can now buzzer");
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
+
 
             }
         });
@@ -84,9 +81,6 @@ public class FourPlayer extends ActionBarActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 text = (TextView) findViewById(R.id.textView7);
                 text.setText("Restarted, you can now buzzer");
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
 
             }
         });
@@ -107,9 +101,6 @@ public class FourPlayer extends ActionBarActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 text = (TextView) findViewById(R.id.textView7);
                 text.setText("Restarted, you can now buzzer");
-                //Intent intent = getIntent();
-                //finish();
-                //startActivity(intent);
 
             }
         });
